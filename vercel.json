@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/videos/voskhozhdenie-v-teni.mp4",
+      "destination": "https://raw.githubusercontent.com/NexitOz/kodraido/adf1ee315d01a1a31c62b529038d77fe8f9afb60/videos/voskhozhdenie-v-teni.mp4"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/videos/voskhozhdenie-v-teni.mp4",
+      "headers": [
+        { "key": "Content-Type", "value": "video/mp4" }
+      ]
+    }
+  ]
+}
