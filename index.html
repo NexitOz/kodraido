@@ -342,6 +342,7 @@
     transform: scale(.55) rotate(-10deg); opacity:0; filter: blur(14px) brightness(2.2);
     transition: transform 1s cubic-bezier(.2,1.5,.35,1), opacity .8s ease, filter 1s cubic-bezier(.2,1.5,.35,1);
   }
+  .pc-art img{ width:100%; height:100%; object-fit:cover; display:block; }
   .presave-cover.materialize .pc-art{ transform:scale(1) rotate(0deg); opacity:1; filter:blur(0) brightness(1); }
   .pc-rune{
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -725,14 +726,14 @@
 <section class="block presave" id="presave">
   <div class="wrap reveal">
     <div class="eyebrow" id="presaveEyebrow">🔥 скоро выходит</div>
-    <h2><span id="presaveTitle">Новый альбом уже готовится.</span><br><span class="accent" id="presaveAccent">Пресейв открыт.</span></h2>
-    <p class="lede" id="presaveDesc">Забронируй альбом заранее — он сам появится в твоей библиотеке в день релиза, без лишних напоминаний.</p>
+    <h2><span id="presaveTitle">Повелитель тайн.</span><br><span class="accent" id="presaveAccent">Пресейв открыт.</span></h2>
+    <p class="lede" id="presaveDesc">Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.</p>
 
     <div class="presave-cover" id="presaveCover">
       <div class="pc-disc" aria-hidden="true"></div>
       <div class="pc-art">
+        <img id="presaveCoverImage" src="/images/povelitel-tayn-cover.png" alt="Обложка «Повелитель тайн»">
         <div class="pc-shine" aria-hidden="true"></div>
-        <span class="pc-rune" aria-hidden="true">ᚱ</span>
       </div>
       <div class="pc-burst" aria-hidden="true"></div>
       <span class="pc-spark s1" aria-hidden="true">✨</span>
@@ -741,8 +742,8 @@
       <span class="pc-spark s4" aria-hidden="true">✨</span>
     </div>
 
-    <a class="btn-solid presave-btn" id="presaveBtn" href="https://band.link/JUhVQ" target="_blank" rel="noopener">
-      <span class="pb-ic">🔔</span> Сделать пресейв
+    <a class="btn-solid presave-btn" id="presaveBtn" href="https://band.link/W1H1V" target="_blank" rel="noopener">
+      <span class="pb-ic">🔔</span> <span id="presaveBtnLabel">Открыть пресейв</span>
     </a>
   </div>
 </section>
@@ -1094,13 +1095,13 @@
       cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-solo-leveling-korol-teney'
     },
     presave: {
-      eyebrow:'🔥 скоро выходит', title:'Новый альбом уже готовится.', accent:'Пресейв открыт.',
-      description:'Забронируй альбом заранее — он сам появится в твоей библиотеке в день релиза, без лишних напоминаний.',
-      cta:'Сделать пресейв', href:'https://band.link/JUhVQ'
+      eyebrow:'🔥 скоро выходит', title:'Повелитель тайн.', accent:'Пресейв открыт.',
+      description:'Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.',
+      cover:'/images/povelitel-tayn-cover.png', cta:'Открыть пресейв', href:'https://band.link/W1H1V'
     },
     inProgress: [
       { title:'Пожиратель звёзд', percent:60 },
-      { title:'Меч и жезл Вистории', percent:35 },
+      { title:'Меч и жезл Вистории', percent:100 },
       { title:'Новый видеошот', percent:85 }
     ],
     news: [
@@ -1162,6 +1163,12 @@
     if(accent) accent.textContent = data.accent || accent.textContent;
     const desc = document.getElementById('presaveDesc');
     if(desc) desc.textContent = data.description || desc.textContent;
+    const cover = document.getElementById('presaveCoverImage');
+    if(cover && data.cover) cover.src = data.cover;
+    const btn = document.getElementById('presaveBtn');
+    if(btn && data.href) btn.href = data.href;
+    const btnLabel = document.getElementById('presaveBtnLabel');
+    if(btnLabel && data.cta) btnLabel.textContent = data.cta;
   }
 
   function renderProgress(container, items){
