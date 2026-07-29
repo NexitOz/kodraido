@@ -438,10 +438,16 @@
     scroll-snap-type:x mandatory; -ms-overflow-style:none; scrollbar-width:none; }
   .track-scroll::-webkit-scrollbar{ display:none; }
   .track-card{
-    flex:0 0 148px; scroll-snap-align:start; border-radius:14px; padding:10px;
+    flex:0 0 148px; scroll-snap-align:start; border-radius:14px; padding:10px; color:#fff; text-decoration:none;
     background: rgba(20,15,40,0.55); border:1px solid rgba(255,255,255,0.14);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px); transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
   }
+  .track-card:hover{ transform:translateY(-5px); border-color:rgba(255,178,63,.52); box-shadow:0 18px 34px -20px rgba(255,61,120,.8); }
+  .track-art{ position:relative; display:grid; place-items:center; width:100%; aspect-ratio:1/1; border-radius:9px; overflow:hidden; margin-bottom:10px; background:radial-gradient(circle at 28% 20%, rgba(255,178,63,.75), transparent 30%), radial-gradient(circle at 80% 85%, rgba(255,61,120,.72), transparent 38%), linear-gradient(145deg,#261947,#0d0a1c); box-shadow:0 6px 16px rgba(0,0,0,.4); }
+  .track-art::before{ content:""; position:absolute; width:76%; height:76%; border:1px solid rgba(255,255,255,.24); border-radius:50%; animation:trackOrbit 9s linear infinite; }
+  .track-art::after{ content:""; position:absolute; width:48%; height:48%; border:1px dashed rgba(255,178,63,.48); transform:rotate(45deg); }
+  .track-art span{ position:relative; z-index:1; font-family:'Unbounded',sans-serif; font-size:24px; font-weight:900; text-shadow:0 0 24px rgba(255,178,63,.75); }
+  @keyframes trackOrbit{ to{ transform:rotate(360deg); } }
   .track-card img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:9px; display:block; margin-bottom:10px; box-shadow:0 6px 16px rgba(0,0,0,0.4); }
   .track-card .tnum{ font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--gold); margin-bottom:4px; }
   .track-card .ttitle{ font-size:12.5px; font-weight:800; line-height:1.25; }
@@ -537,6 +543,8 @@
   .progress-item{
     padding:16px 18px; border-radius:14px; background: linear-gradient(180deg, var(--panel-2), var(--panel)); border:1px solid var(--line);
   }
+  .progress-item.is-complete{ border-color:rgba(255,178,63,.42); box-shadow:0 0 28px -18px rgba(255,178,63,.9); }
+  .progress-item.is-complete .progress-head span::before{ content:"✓ "; color:#fff; }
   .progress-head{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:10px; }
   .progress-head b{ font-size:14.5px; font-weight:700; }
   .progress-head span{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gold); flex-shrink:0; }
@@ -560,9 +568,15 @@
     transition: transform .18s ease, border-color .18s ease;
   }
   .news-card:hover{ transform: translateY(-3px); border-color: rgba(255,178,63,0.4); }
+  .news-card{ position:relative; overflow:hidden; }
+  .news-card::after{ content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(110deg, transparent 25%, rgba(255,255,255,.07) 45%, transparent 65%); transform:translateX(-120%); }
+  .news-card:hover::after{ animation:newsShine .85s ease; }
+  @keyframes newsShine{ to{ transform:translateX(120%); } }
   .news-card .n-ico{ font-size:22px; flex-shrink:0; line-height:1.3; }
   .news-card b{ display:block; font-size:14.5px; margin-bottom:3px; }
   .news-card p{ margin:0; font-size:13px; color:var(--muted); line-height:1.5; }
+  .news-status{ display:inline-flex; margin-bottom:6px; padding:3px 7px; border-radius:999px; border:1px solid rgba(255,178,63,.32); background:rgba(255,178,63,.08); color:var(--gold); font:700 9px/1.2 'JetBrains Mono',monospace; letter-spacing:.08em; text-transform:uppercase; }
+  @media (prefers-reduced-motion: reduce){ .track-art::before, .news-card:hover::after{ animation:none; } }
 
   /* ---------- VIDEO SHOTS ---------- */
   .shots-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px; }
@@ -879,14 +893,12 @@
   <div class="bleed-content wrap reveal">
     <div class="eyebrow">в эфире</div>
     <h2>Новые треки</h2>
-    <p>То, что слушают прямо сейчас.</p>
+    <p>Три новые истории уже звучат на Яндекс Музыке.</p>
     <div class="track-scroll">
-      <div class="track-card"><img src="https://i.scdn.co/image/ab67616d0000485112d90679d92e27adad022326" alt=""><div class="tnum">01 · OST</div><div class="ttitle">История мечника — БК</div></div>
-      <div class="track-card"><img src="https://i.scdn.co/image/ab67616d0000485112d90679d92e27adad022326" alt=""><div class="tnum">02 · OST</div><div class="ttitle">Сяо Янь и Медуза</div></div>
-      <div class="track-card"><img src="https://i.scdn.co/image/ab67616d000048512be2c063d888304c1879d240" alt=""><div class="tnum">03 · OST</div><div class="ttitle">Трон отмеченный богом — Цай эр</div></div>
-      <div class="track-card"><img src="https://i.scdn.co/image/ab67616d000048512be2c063d888304c1879d240" alt=""><div class="tnum">04 · OST</div><div class="ttitle">Ангелы смерти</div></div>
-      <div class="track-card"><img src="https://i.scdn.co/image/ab67616d000048512be2c063d888304c1879d240" alt=""><div class="tnum">05 · OST</div><div class="ttitle">ММО — за Асуной</div></div>
-      <a class="track-more" href="https://open.spotify.com/artist/0r3eF6uae24YhWaGRUeKkk" target="_blank" rel="noopener">Слушать всё →</a>
+      <a class="track-card" href="https://music.yandex.ru/artist/25657054/tracks" target="_blank" rel="noopener"><div class="track-art" aria-hidden="true"><span>МЖ</span></div><div class="tnum">01 · НОВОЕ</div><div class="ttitle">Меч и жезл Вистории</div></a>
+      <a class="track-card" href="https://music.yandex.ru/artist/25657054/tracks" target="_blank" rel="noopener"><div class="track-art" aria-hidden="true"><span>ЛФ</span></div><div class="tnum">02 · НОВОЕ</div><div class="ttitle">Любимый во Франксе</div></a>
+      <a class="track-card" href="https://music.yandex.ru/artist/25657054/tracks" target="_blank" rel="noopener"><div class="track-art" aria-hidden="true"><span>АК</span></div><div class="tnum">03 · НОВОЕ</div><div class="ttitle">Ангел кровопролития</div></a>
+      <a class="track-more" href="https://music.yandex.ru/artist/25657054/tracks" target="_blank" rel="noopener">Все треки<br>на Яндекс Музыке →</a>
     </div>
   </div>
 </section>
@@ -1100,14 +1112,15 @@
       cover:'/images/povelitel-tayn-cover.png', cta:'Открыть пресейв', href:'https://band.link/W1H1V'
     },
     inProgress: [
-      { title:'Пожиратель звёзд', percent:60 },
+      { title:'Пожиратель звёзд', percent:100 },
       { title:'Меч и жезл Вистории', percent:100 },
       { title:'Новый видеошот', percent:85 }
     ],
     news: [
-      { icon:'🎵', title:'Вышел новый сингл', text:'«Solo Leveling — Король теней» уже на всех площадках.', href:'https://creatormusic.ru/release/kod-raydo-solo-leveling-korol-teney' },
-      { icon:'💿', title:'Альбом доступен', text:'«Осколки судеб» — полная летопись, собранная в один альбом.', href:'https://creatormusic.ru/release/kod-raydo-oskolki-sudeb' },
-      { icon:'🔔', title:'Пресейв открыт', text:'Новый альбом уже готовится — забронируй его заранее.', href:'#presave' }
+      { icon:'⚡', status:'уже в эфире', title:'Вышли три новых трека', text:'«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.', href:'https://music.yandex.ru/artist/25657054/tracks' },
+      { icon:'🔔', status:'пресейв', title:'Открыт пресейв «Повелителя тайн»', text:'Открой пресейв сейчас — новый трек сам появится в твоей библиотеке в день выхода.', href:'https://band.link/W1H1V' },
+      { icon:'🚀', status:'на модерации', title:'Ли Мувань и Сяо Ву — скоро', text:'Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.', href:'#news' },
+      { icon:'⭐', status:'готово', title:'«Пожиратель звёзд» доработан', text:'Работа над треком завершена на 100%. Сейчас он проходит модерацию перед релизом.', href:'#inprogress' }
     ],
     videoShots: [
       { title:'Пожиратель звёзд', status:'скоро' },
@@ -1174,7 +1187,7 @@
   function renderProgress(container, items){
     if(!container) return;
     container.innerHTML = items.map(it => `
-      <div class="progress-item">
+      <div class="progress-item ${Number(it.percent) >= 100 ? 'is-complete' : ''}">
         <div class="progress-head"><b>${esc(it.title)}</b><span>${it.percent}%</span></div>
         <div class="progress-track"><div class="progress-fill" data-percent="${it.percent}"></div></div>
       </div>
@@ -1186,7 +1199,7 @@
     container.innerHTML = items.map(n => {
       const external = /^https?:/.test(n.href || '');
       const attrs = external ? 'target="_blank" rel="noopener"' : '';
-      return `<a class="news-card" href="${esc(n.href || '#')}" ${attrs}><span class="n-ico">${n.icon || '✨'}</span><span><b>${esc(n.title)}</b><p>${esc(n.text)}</p></span></a>`;
+      return `<a class="news-card" href="${esc(n.href || '#')}" ${attrs}><span class="n-ico">${n.icon || '✨'}</span><span>${n.status ? `<small class="news-status">${esc(n.status)}</small>` : ''}<b>${esc(n.title)}</b><p>${esc(n.text)}</p></span></a>`;
     }).join('');
   }
 
