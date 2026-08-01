@@ -336,6 +336,7 @@
   /* ---------- PRESAVE ---------- */
   .presave{ text-align:center; overflow:hidden; }
   .presave .lede{ margin-left:auto; margin-right:auto; }
+  .presave-entry + .presave-entry{ margin-top:56px; padding-top:48px; border-top:1px solid var(--line); }
   .presave-cover{ position:relative; width:min(70vw,236px); margin:34px auto 30px; aspect-ratio:1/1; }
   .pc-disc{
     position:absolute; top:50%; left:50%; width:88%; height:88%; border-radius:50%; z-index:0;
@@ -764,6 +765,7 @@
 
 <section class="block presave" id="presave">
   <div class="wrap reveal">
+    <div class="presave-entry" id="presavePrimaryEntry">
     <div class="eyebrow" id="presaveEyebrow">🔥 скоро выходит</div>
     <h2><span id="presaveTitle">Повелитель тайн.</span><br><span class="accent" id="presaveAccent">Пресейв открыт.</span></h2>
     <p class="lede" id="presaveDesc">Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.</p>
@@ -784,6 +786,30 @@
     <a class="btn-solid presave-btn" id="presaveBtn" href="https://band.link/W1H1V" target="_blank" rel="noopener">
       <span class="pb-ic">🔔</span> <span id="presaveBtnLabel">Открыть пресейв</span>
     </a>
+    </div>
+
+    <div class="presave-entry" id="presaveSecondaryEntry">
+      <div class="eyebrow" id="presaveSecondaryEyebrow">✨ ещё один пресейв открыт</div>
+      <h2><span id="presaveSecondaryTitle">Пожиратель звёзд.</span><br><span class="accent" id="presaveSecondaryAccent">Сохрани первым.</span></h2>
+      <p class="lede" id="presaveSecondaryDesc">Открой пресейв — трек появится в твоей библиотеке сразу после релиза.</p>
+
+      <div class="presave-cover" id="presaveSecondaryCover">
+        <div class="pc-disc" aria-hidden="true"></div>
+        <div class="pc-art">
+          <img id="presaveSecondaryCoverImage" src="/images/pozhiratel-zvezd-cover.png" alt="Обложка «Пожиратель звёзд»">
+          <div class="pc-shine" aria-hidden="true"></div>
+        </div>
+        <div class="pc-burst" aria-hidden="true"></div>
+        <span class="pc-spark s1" aria-hidden="true">✨</span>
+        <span class="pc-spark s2" aria-hidden="true">✨</span>
+        <span class="pc-spark s3" aria-hidden="true">✨</span>
+        <span class="pc-spark s4" aria-hidden="true">✨</span>
+      </div>
+
+      <a class="btn-solid presave-btn" id="presaveSecondaryBtn" href="https://band.link/PdVna" target="_blank" rel="noopener">
+        <span class="pb-ic">🔔</span> <span id="presaveSecondaryBtnLabel">Открыть пресейв</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1062,9 +1088,9 @@
 
   // Presave: обложка "материализуется" при появлении в кадре + звук
   (function(){
-    const cover = document.getElementById('presaveCover');
-    const btn = document.getElementById('presaveBtn');
-    if(!cover) return;
+    const covers = document.querySelectorAll('.presave-cover');
+    const buttons = document.querySelectorAll('.presave-btn');
+    if(!covers.length) return;
 
     let audioCtx = null;
     function unlockAudio(){
@@ -1103,21 +1129,21 @@
     }
 
     if(reduceMotion2){
-      cover.classList.add('materialize');
+      covers.forEach(cover => cover.classList.add('materialize'));
     } else {
       const pIO = new IntersectionObserver((entries) => {
         entries.forEach(en => {
           if(en.isIntersecting){
-            cover.classList.add('materialize');
+            en.target.classList.add('materialize');
             playChime();
-            pIO.disconnect();
+            pIO.unobserve(en.target);
           }
         });
       }, { threshold: 0.4 });
-      pIO.observe(cover);
+      covers.forEach(cover => pIO.observe(cover));
     }
 
-    if(btn) btn.addEventListener('click', playWhoosh);
+    buttons.forEach(btn => btn.addEventListener('click', playWhoosh));
   })();
 
   // ---------- Данные сайта: релизы, пресейв, новости, прогресс, соцсети ----------
@@ -1143,6 +1169,11 @@
       eyebrow:'🔥 скоро выходит', title:'Повелитель тайн.', accent:'Пресейв открыт.',
       description:'Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.',
       cover:'/images/povelitel-tayn-cover.png', cta:'Открыть пресейв', href:'https://band.link/W1H1V'
+    },
+    presaveSecondary: {
+      eyebrow:'✨ ещё один пресейв открыт', title:'Пожиратель звёзд.', accent:'Сохрани первым.',
+      description:'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.',
+      cover:'/images/pozhiratel-zvezd-cover.png', cta:'Открыть пресейв', href:'https://band.link/PdVna'
     },
     inProgress: [
       { title:'Гробница падших богов', percent:30 },
@@ -1199,21 +1230,21 @@
     if(cta) cta.textContent = data.cta || 'Слушать сейчас';
   }
 
-  function renderPresave(data){
+  function renderPresave(data, prefix = 'presave'){
     if(!data) return;
-    const eyebrow = document.getElementById('presaveEyebrow');
+    const eyebrow = document.getElementById(prefix + 'Eyebrow');
     if(eyebrow) eyebrow.textContent = data.eyebrow || eyebrow.textContent;
-    const title = document.getElementById('presaveTitle');
+    const title = document.getElementById(prefix + 'Title');
     if(title) title.textContent = data.title || title.textContent;
-    const accent = document.getElementById('presaveAccent');
+    const accent = document.getElementById(prefix + 'Accent');
     if(accent) accent.textContent = data.accent || accent.textContent;
-    const desc = document.getElementById('presaveDesc');
+    const desc = document.getElementById(prefix + 'Desc');
     if(desc) desc.textContent = data.description || desc.textContent;
-    const cover = document.getElementById('presaveCoverImage');
+    const cover = document.getElementById(prefix + 'CoverImage');
     if(cover && data.cover) cover.src = data.cover;
-    const btn = document.getElementById('presaveBtn');
+    const btn = document.getElementById(prefix + 'Btn');
     if(btn && data.href) btn.href = data.href;
-    const btnLabel = document.getElementById('presaveBtnLabel');
+    const btnLabel = document.getElementById(prefix + 'BtnLabel');
     if(btnLabel && data.cta) btnLabel.textContent = data.cta;
   }
 
@@ -1283,6 +1314,7 @@
     renderPlatforms(document.querySelector('#heroPlatforms .platforms'), data.platforms);
     renderFeatured(data.featuredRelease);
     renderPresave(data.presave);
+    renderPresave(data.presaveSecondary, 'presaveSecondary');
     renderProgress(document.getElementById('progressList'), data.inProgress);
     renderNews(document.getElementById('newsList'), data.news);
     renderShots(document.getElementById('shotsGrid'), data.videoShots);

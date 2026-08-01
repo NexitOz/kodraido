@@ -27,6 +27,16 @@
     "href": "https://band.link/W1H1V"
   },
 
+  "presaveSecondary": {
+    "eyebrow": "✨ ещё один пресейв открыт",
+    "title": "Пожиратель звёзд.",
+    "accent": "Сохрани первым.",
+    "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
+    "cover": "/images/pozhiratel-zvezd-cover.png",
+    "cta": "Открыть пресейв",
+    "href": "https://band.link/PdVna"
+  },
+
   "inProgress": [
     { "title": "Гробница падших богов", "percent": 30 },
     { "title": "Начало после конца", "percent": 40 },
