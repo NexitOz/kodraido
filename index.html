@@ -556,6 +556,7 @@
     background: linear-gradient(160deg, var(--panel-2), var(--panel) 55%, #1a1333 100%);
     box-shadow: 0 26px 60px -22px rgba(0,0,0,0.7);
   }
+  .featured-card + .featured-card{ margin-top:22px; }
   .featured-cover{ position:relative; aspect-ratio:1/1; overflow:hidden; }
   .featured-cover img{ width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02); transition: transform .5s ease; }
   .featured-card:hover .featured-cover img{ transform:scale(1.08); }
@@ -772,6 +773,18 @@
         <div class="featured-title" id="featuredTitle"></div>
         <p class="featured-sub" id="featuredSub"></p>
         <span class="featured-cta btn-solid"><span id="featuredCta"></span> ▶</span>
+      </div>
+    </a>
+    <a class="featured-card" id="featuredSecondaryCard" href="https://creatormusic.ru/release/kod-raydo-li-muvan" target="_blank" rel="noopener">
+      <div class="featured-cover">
+        <img id="featuredSecondaryCover" src="/images/li-muvan-cover.png" alt="Обложка сингла «Ли Мувань»">
+        <div class="featured-play" aria-hidden="true">▶</div>
+      </div>
+      <div class="featured-body">
+        <span class="release-badge" id="featuredSecondaryBadge" style="color:var(--pink); border:1px solid rgba(255,61,120,0.45); background: rgba(255,61,120,0.08);">Сингл</span>
+        <div class="featured-title" id="featuredSecondaryTitle">Ли Мувань</div>
+        <p class="featured-sub" id="featuredSecondarySub">Сингл КОД РАЙДО уже доступен на музыкальных площадках.</p>
+        <span class="featured-cta btn-solid"><span id="featuredSecondaryCta">Слушать сейчас</span> ▶</span>
       </div>
     </a>
   </div>
@@ -1158,6 +1171,12 @@
       cover:'/images/pozhiratel-zvezd-cover.png',
       cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd'
     },
+    featuredReleaseSecondary: {
+      badge:'Сингл', title:'Ли Мувань',
+      description:'Сингл КОД РАЙДО уже доступен на музыкальных площадках.',
+      cover:'/images/li-muvan-cover.png',
+      cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-li-muvan'
+    },
     presave: {
       eyebrow:'🔥 скоро выходит', title:'Повелитель тайн.', accent:'Пресейв открыт.',
       description:'Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.',
@@ -1202,19 +1221,22 @@
     }).join('');
   }
 
-  function renderFeatured(data){
-    const card = document.getElementById('featuredCard');
+  function renderFeatured(data, prefix = 'featured'){
+    const card = document.getElementById(prefix + 'Card');
     if(!card || !data) return;
     card.href = data.href || '#';
-    const cover = document.getElementById('featuredCover');
-    if(cover) cover.src = data.cover || '';
-    const badge = document.getElementById('featuredBadge');
+    const cover = document.getElementById(prefix + 'Cover');
+    if(cover){
+      cover.src = data.cover || '';
+      cover.alt = data.title ? `Обложка сингла «${data.title}»` : '';
+    }
+    const badge = document.getElementById(prefix + 'Badge');
     if(badge) badge.textContent = data.badge || '';
-    const title = document.getElementById('featuredTitle');
+    const title = document.getElementById(prefix + 'Title');
     if(title) title.textContent = data.title || '';
-    const sub = document.getElementById('featuredSub');
+    const sub = document.getElementById(prefix + 'Sub');
     if(sub) sub.textContent = data.description || '';
-    const cta = document.getElementById('featuredCta');
+    const cta = document.getElementById(prefix + 'Cta');
     if(cta) cta.textContent = data.cta || 'Слушать сейчас';
   }
 
@@ -1301,6 +1323,7 @@
   function applySiteData(data){
     renderPlatforms(document.querySelector('#heroPlatforms .platforms'), data.platforms);
     renderFeatured(data.featuredRelease);
+    renderFeatured(data.featuredReleaseSecondary, 'featuredSecondary');
     renderPresave(data.presave);
     renderProgress(document.getElementById('progressList'), data.inProgress);
     renderNews(document.getElementById('newsList'), data.news);

@@ -17,6 +17,15 @@
     "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd"
   },
 
+  "featuredReleaseSecondary": {
+    "badge": "Сингл",
+    "title": "Ли Мувань",
+    "description": "Сингл КОД РАЙДО уже доступен на музыкальных площадках.",
+    "cover": "/images/li-muvan-cover.png",
+    "cta": "Слушать сейчас",
+    "href": "https://creatormusic.ru/release/kod-raydo-li-muvan"
+  },
+
   "presave": {
     "eyebrow": "🔥 скоро выходит",
     "title": "Повелитель тайн.",
