@@ -10,11 +10,11 @@
 
   "featuredRelease": {
     "badge": "Сингл",
-    "title": "Ли Мувань",
+    "title": "Пожиратель звёзд",
     "description": "Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/li-muvan-cover.png",
+    "cover": "/images/pozhiratel-zvezd-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://creatormusic.ru/release/kod-raydo-li-muvan"
+    "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd"
   },
 
   "presave": {
@@ -27,16 +27,6 @@
     "href": "https://band.link/W1H1V"
   },
 
-  "presaveSecondary": {
-    "eyebrow": "✨ ещё один пресейв открыт",
-    "title": "Пожиратель звёзд.",
-    "accent": "Сохрани первым.",
-    "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
-    "cover": "/images/pozhiratel-zvezd-cover.png",
-    "cta": "Открыть пресейв",
-    "href": "https://band.link/PdVna"
-  },
-
   "inProgress": [
     { "title": "Гробница падших богов", "percent": 30 },
     { "title": "Начало после конца", "percent": 40 },
@@ -47,7 +37,7 @@
     { "icon": "⚡", "status": "уже в эфире", "title": "Вышли три новых трека", "text": "«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.", "href": "https://music.yandex.ru/artist/25657054/tracks" },
     { "icon": "🔔", "status": "пресейв", "title": "Открыт пресейв «Повелителя тайн»", "text": "Открой пресейв сейчас — новый трек сам появится в твоей библиотеке в день выхода.", "href": "https://band.link/W1H1V" },
     { "icon": "🚀", "status": "на модерации", "title": "Ли Мувань и Сяо Ву — скоро", "text": "Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.", "href": "#news" },
-    { "icon": "⭐", "status": "готово", "title": "«Пожиратель звёзд» доработан", "text": "Работа над треком завершена на 100%. Сейчас он проходит модерацию перед релизом.", "href": "#inprogress" }
+    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Пожиратель звёзд»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd" }
   ],
 
   "videoShots": [

@@ -350,7 +350,6 @@
   /* ---------- PRESAVE ---------- */
   .presave{ text-align:center; overflow:hidden; }
   .presave .lede{ margin-left:auto; margin-right:auto; }
-  .presave-entry + .presave-entry{ margin-top:56px; padding-top:48px; border-top:1px solid var(--line); }
   .presave-cover{ position:relative; width:min(70vw,236px); margin:34px auto 30px; aspect-ratio:1/1; }
   .pc-disc{
     position:absolute; top:50%; left:50%; width:88%; height:88%; border-radius:50%; z-index:0;
@@ -803,28 +802,6 @@
     </a>
     </div>
 
-    <div class="presave-entry" id="presaveSecondaryEntry">
-      <div class="eyebrow" id="presaveSecondaryEyebrow">✨ ещё один пресейв открыт</div>
-      <h2><span id="presaveSecondaryTitle">Пожиратель звёзд.</span><br><span class="accent" id="presaveSecondaryAccent">Сохрани первым.</span></h2>
-      <p class="lede" id="presaveSecondaryDesc">Открой пресейв — трек появится в твоей библиотеке сразу после релиза.</p>
-
-      <div class="presave-cover" id="presaveSecondaryCover">
-        <div class="pc-disc" aria-hidden="true"></div>
-        <div class="pc-art">
-          <img id="presaveSecondaryCoverImage" src="/images/pozhiratel-zvezd-cover.png" alt="Обложка «Пожиратель звёзд»">
-          <div class="pc-shine" aria-hidden="true"></div>
-        </div>
-        <div class="pc-burst" aria-hidden="true"></div>
-        <span class="pc-spark s1" aria-hidden="true">✨</span>
-        <span class="pc-spark s2" aria-hidden="true">✨</span>
-        <span class="pc-spark s3" aria-hidden="true">✨</span>
-        <span class="pc-spark s4" aria-hidden="true">✨</span>
-      </div>
-
-      <a class="btn-solid presave-btn" id="presaveSecondaryBtn" href="https://band.link/PdVna" target="_blank" rel="noopener">
-        <span class="pb-ic">🔔</span> <span id="presaveSecondaryBtnLabel">Открыть пресейв</span>
-      </a>
-    </div>
   </div>
 </section>
 
@@ -1176,20 +1153,15 @@
       { id:'sber', label:'СберЗвук', href:'https://share.zvuk.com/cLQ0/diebmtq4' }
     ],
     featuredRelease: {
-      badge:'Сингл', title:'Ли Мувань',
+      badge:'Сингл', title:'Пожиратель звёзд',
       description:'Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.',
-      cover:'/images/li-muvan-cover.png',
-      cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-li-muvan'
+      cover:'/images/pozhiratel-zvezd-cover.png',
+      cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd'
     },
     presave: {
       eyebrow:'🔥 скоро выходит', title:'Повелитель тайн.', accent:'Пресейв открыт.',
       description:'Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.',
       cover:'/images/povelitel-tayn-cover.png', cta:'Открыть пресейв', href:'https://band.link/W1H1V'
-    },
-    presaveSecondary: {
-      eyebrow:'✨ ещё один пресейв открыт', title:'Пожиратель звёзд.', accent:'Сохрани первым.',
-      description:'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.',
-      cover:'/images/pozhiratel-zvezd-cover.png', cta:'Открыть пресейв', href:'https://band.link/PdVna'
     },
     inProgress: [
       { title:'Гробница падших богов', percent:30 },
@@ -1200,7 +1172,7 @@
       { icon:'⚡', status:'уже в эфире', title:'Вышли три новых трека', text:'«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.', href:'https://music.yandex.ru/artist/25657054/tracks' },
       { icon:'🔔', status:'пресейв', title:'Открыт пресейв «Повелителя тайн»', text:'Открой пресейв сейчас — новый трек сам появится в твоей библиотеке в день выхода.', href:'https://band.link/W1H1V' },
       { icon:'🚀', status:'на модерации', title:'Ли Мувань и Сяо Ву — скоро', text:'Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.', href:'#news' },
-      { icon:'⭐', status:'готово', title:'«Пожиратель звёзд» доработан', text:'Работа над треком завершена на 100%. Сейчас он проходит модерацию перед релизом.', href:'#inprogress' }
+      { icon:'⭐', status:'уже в эфире', title:'Вышел «Пожиратель звёзд»', text:'Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.', href:'https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd' }
     ],
     videoShots: [
       { title:'Пожиратель звёзд', status:'скоро' },
@@ -1330,7 +1302,6 @@
     renderPlatforms(document.querySelector('#heroPlatforms .platforms'), data.platforms);
     renderFeatured(data.featuredRelease);
     renderPresave(data.presave);
-    renderPresave(data.presaveSecondary, 'presaveSecondary');
     renderProgress(document.getElementById('progressList'), data.inProgress);
     renderNews(document.getElementById('newsList'), data.news);
     renderShots(document.getElementById('shotsGrid'), data.videoShots);
