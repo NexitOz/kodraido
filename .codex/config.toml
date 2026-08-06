@@ -1,0 +1,5 @@
+# Project-scoped tools for the KOD RAIDO site.
+# The API key is supplied by the Codex environment and is never stored in Git.
+[mcp_servers.originkit]
+url = "https://mcp.originkit.dev/vellumai"
+bearer_token_env_var = "ORIGINKIT_API_KEY"
