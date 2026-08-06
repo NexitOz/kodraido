@@ -61,77 +61,6 @@
   .reveal.in-view{ opacity:1; transform: translateY(0); }
   @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 
-  /* ---------- THANK-YOU INTRO ---------- */
-  .thanks-intro{
-    position:fixed; inset:0; z-index:200; display:grid; place-items:center; overflow:hidden;
-    padding:24px; background:radial-gradient(circle at 50% 38%, #321b49 0%, #17102d 46%, #090714 100%);
-    isolation:isolate; transition:opacity .28s ease, visibility .28s ease, background-color .7s ease; cursor:pointer;
-  }
-  .thanks-intro::before{
-    content:""; position:absolute; inset:-35%; z-index:-2;
-    background:conic-gradient(from 20deg, transparent, rgba(255,61,120,.15), transparent 25%, rgba(255,178,63,.12), transparent 52%);
-    animation:thanksAura 7s linear infinite;
-  }
-  .thanks-intro::after{
-    content:""; position:absolute; inset:0; z-index:-1; opacity:.22;
-    background:repeating-linear-gradient(115deg, transparent 0 24px, rgba(255,255,255,.08) 25px, transparent 26px 58px);
-    mask-image:radial-gradient(circle, #000, transparent 70%);
-  }
-  .thanks-intro.is-burning{ background-color:transparent; pointer-events:none; }
-  .thanks-intro.is-burning::before,.thanks-intro.is-burning::after{ animation:thanksBackdropBurn .8s ease forwards; }
-  .thanks-intro.is-burning .thanks-inner{ animation:thanksBurnAway .82s cubic-bezier(.65,0,.9,.35) forwards; }
-  .thanks-intro.is-burning .thanks-particle{ animation:thanksSparkBurn .65s ease-out forwards; }
-  .thanks-intro.is-burning .thanks-fire{ opacity:1; animation:thanksFireRise .85s cubic-bezier(.2,.7,.35,1) forwards; }
-  .thanks-intro.is-leaving{ opacity:0; visibility:hidden; pointer-events:none; }
-  .thanks-intro[hidden]{ display:none; }
-  .thanks-inner{ position:relative; width:min(100%,560px); text-align:center; }
-  .thanks-kicker{
-    display:inline-flex; align-items:center; gap:9px; margin-bottom:18px; opacity:0; transform:translateY(12px);
-    color:var(--gold); font:600 11px/1 'JetBrains Mono',monospace; letter-spacing:.18em; text-transform:uppercase;
-    animation:thanksRise .3s ease .04s forwards;
-  }
-  .thanks-kicker::before,.thanks-kicker::after{ content:""; width:24px; height:1px; background:currentColor; opacity:.55; }
-  .thanks-number{
-    display:block; margin:0; font:900 clamp(58px,19vw,104px)/.9 'Unbounded',sans-serif; letter-spacing:-.075em;
-    color:#fff; text-shadow:0 0 28px rgba(255,61,120,.45),0 0 70px rgba(255,178,63,.18);
-    opacity:0; transform:scale(.72); animation:thanksPop .42s cubic-bezier(.2,1.4,.45,1) .12s forwards;
-  }
-  .thanks-number span{ color:var(--pink); }
-  .thanks-title{
-    max-width:470px; margin:20px auto 10px; font:800 clamp(20px,6vw,30px)/1.25 'Unbounded',sans-serif;
-    opacity:0; transform:translateY(18px); animation:thanksRise .32s ease .28s forwards;
-  }
-  .thanks-title em{ color:var(--gold); font-style:normal; }
-  .thanks-note{
-    margin:0; color:var(--muted); font-size:14px; line-height:1.55; opacity:0;
-    animation:thanksRise .28s ease .43s forwards;
-  }
-  .thanks-wave{ display:flex; justify-content:center; align-items:center; gap:5px; height:30px; margin-top:22px; opacity:0; animation:thanksRise .25s ease .55s forwards; }
-  .thanks-wave i{ width:3px; height:8px; border-radius:4px; background:linear-gradient(var(--gold),var(--pink)); animation:thanksBeat .7s ease-in-out infinite alternate; }
-  .thanks-wave i:nth-child(2),.thanks-wave i:nth-child(6){ animation-delay:-.45s; }
-  .thanks-wave i:nth-child(3),.thanks-wave i:nth-child(5){ animation-delay:-.2s; }
-  .thanks-wave i:nth-child(4){ animation-delay:-.6s; }
-  .thanks-skip{ position:absolute; right:18px; bottom:18px; border:0; background:none; color:rgba(245,241,255,.55); font:600 10px 'JetBrains Mono',monospace; letter-spacing:.08em; cursor:pointer; }
-  .thanks-particle{
-    position:absolute; left:var(--x); bottom:-45px; color:var(--c); font:800 var(--s)/1 'Unbounded',sans-serif;
-    filter:drop-shadow(0 0 10px currentColor); opacity:0; animation:thanksFloat var(--d) ease-in var(--delay) infinite;
-  }
-  .thanks-fire{ position:absolute; inset:auto -8% -25% -8%; height:72%; z-index:5; opacity:0; pointer-events:none; display:flex; align-items:flex-end; justify-content:space-around; filter:drop-shadow(0 -18px 34px rgba(255,61,0,.55)); }
-  .thanks-fire i{ width:18%; height:78%; border-radius:52% 48% 20% 20% / 72% 72% 28% 28%; transform-origin:50% 100%; background:radial-gradient(ellipse at 50% 78%, #fff6b0 0 9%, #ffb23f 22%, #ff3d1f 48%, rgba(151,18,36,.7) 67%, transparent 70%); mix-blend-mode:screen; animation:thanksFlameFlicker .16s ease-in-out infinite alternate; }
-  .thanks-fire i:nth-child(even){ height:62%; animation-delay:-.09s; transform:scaleX(.8); }
-  .thanks-fire i:nth-child(3n){ height:92%; animation-delay:-.14s; }
-  @keyframes thanksAura{ to{ transform:rotate(360deg); } }
-  @keyframes thanksPop{ 65%{ opacity:1; transform:scale(1.06); } 100%{ opacity:1; transform:scale(1); } }
-  @keyframes thanksRise{ to{ opacity:1; transform:translateY(0); } }
-  @keyframes thanksBeat{ to{ height:28px; } }
-  @keyframes thanksFloat{ 0%{ opacity:0; transform:translateY(0) rotate(-8deg) scale(.7); } 14%{ opacity:.8; } 78%{ opacity:.65; } 100%{ opacity:0; transform:translateY(-115vh) rotate(14deg) scale(1.15); } }
-  @keyframes thanksBackdropBurn{ 45%{ opacity:.9; filter:sepia(.5) saturate(1.8); } 100%{ opacity:0; transform:scale(1.15); } }
-  @keyframes thanksBurnAway{ 0%{ opacity:1; filter:brightness(1); clip-path:inset(0 0 0 0); } 28%{ filter:brightness(2.4) sepia(1) saturate(3); } 100%{ opacity:0; filter:brightness(4) blur(7px); clip-path:inset(0 0 100% 0); transform:translateY(-28px) scale(1.04); } }
-  @keyframes thanksSparkBurn{ to{ opacity:0; transform:translateY(-36vh) scale(.25) rotate(35deg); } }
-  @keyframes thanksFireRise{ 0%{ transform:translateY(100%) scaleY(.4); } 48%{ transform:translateY(-12%) scaleY(1.08); opacity:1; } 100%{ transform:translateY(-112%) scaleY(.55); opacity:0; } }
-  @keyframes thanksFlameFlicker{ from{ transform:skewX(-4deg) scaleX(.88); } to{ transform:skewX(5deg) scaleX(1.08) translateY(-3%); } }
-  @media (prefers-reduced-motion: reduce){ .thanks-intro{ display:none; } }
-
   /* ---------- NAV ---------- */
   .topnav{
     position:fixed; top:0; left:0; right:0; z-index:50;
@@ -350,6 +279,7 @@
   /* ---------- PRESAVE ---------- */
   .presave{ text-align:center; overflow:hidden; }
   .presave .lede{ margin-left:auto; margin-right:auto; }
+  .presave-entry + .presave-entry{ margin-top:56px; padding-top:48px; border-top:1px solid var(--line); }
   .presave-cover{ position:relative; width:min(70vw,236px); margin:34px auto 30px; aspect-ratio:1/1; }
   .pc-disc{
     position:absolute; top:50%; left:50%; width:88%; height:88%; border-radius:50%; z-index:0;
@@ -697,27 +627,10 @@
   }
 </style>
 </head>
-<body class="lock">
+<body>
 
 <div class="bg-breath" aria-hidden="true"></div>
 <div class="ambient" id="ambient" aria-hidden="true"></div>
-
-<div class="thanks-intro" id="thanksIntro" role="dialog" aria-modal="true" aria-label="Спасибо слушателям">
-  <div class="thanks-particle" style="--x:8%;--d:4.8s;--delay:-1.2s;--s:18px;--c:#ff3d78">♥</div>
-  <div class="thanks-particle" style="--x:22%;--d:5.4s;--delay:-3.5s;--s:13px;--c:#ffb23f">+1</div>
-  <div class="thanks-particle" style="--x:72%;--d:5.1s;--delay:-2.4s;--s:20px;--c:#ff3d78">♥</div>
-  <div class="thanks-particle" style="--x:88%;--d:5.8s;--delay:-4.1s;--s:12px;--c:#ffb23f">+1</div>
-  <div class="thanks-particle" style="--x:42%;--d:6s;--delay:-4.8s;--s:11px;--c:#f5f1ff">♥</div>
-  <div class="thanks-fire" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="thanks-inner">
-    <div class="thanks-kicker">КОД РАЙДО · ИЮЛЬ</div>
-    <strong class="thanks-number"><span>300</span>К+</strong>
-    <h2 class="thanks-title">Спасибо за более <em>300 тысяч</em> прослушиваний за июль</h2>
-    <p class="thanks-note">Каждое прослушивание — часть нашего общего пути.</p>
-    <div class="thanks-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  </div>
-  <button class="thanks-skip" type="button">пропустить →</button>
-</div>
 
 <nav class="topnav">
   <a class="logo" href="#top">КОД РАЙДО<span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span></a>
@@ -815,6 +728,28 @@
     </a>
     </div>
 
+    <div class="presave-entry" id="presaveSecondaryEntry">
+      <div class="eyebrow" id="presaveSecondaryEyebrow">✨ ещё один пресейв открыт</div>
+      <h2><span id="presaveSecondaryTitle">Между смертью и тобой.</span><br><span class="accent" id="presaveSecondaryAccent">Сохрани первым.</span></h2>
+      <p class="lede" id="presaveSecondaryDesc">Открой пресейв — трек появится в твоей библиотеке сразу после релиза.</p>
+
+      <div class="presave-cover" id="presaveSecondaryCover">
+        <div class="pc-disc" aria-hidden="true"></div>
+        <div class="pc-art">
+          <img id="presaveSecondaryCoverImage" src="/images/mezhdu-smertyu-i-toboy-cover.png" alt="Обложка «Между смертью и тобой»">
+          <div class="pc-shine" aria-hidden="true"></div>
+        </div>
+        <div class="pc-burst" aria-hidden="true"></div>
+        <span class="pc-spark s1" aria-hidden="true">✨</span>
+        <span class="pc-spark s2" aria-hidden="true">✨</span>
+        <span class="pc-spark s3" aria-hidden="true">✨</span>
+        <span class="pc-spark s4" aria-hidden="true">✨</span>
+      </div>
+
+      <a class="btn-solid presave-btn" id="presaveSecondaryBtn" href="https://band.link/5g0NH" target="_blank" rel="noopener">
+        <span class="pb-ic">🔔</span> <span id="presaveSecondaryBtnLabel">Открыть пресейв</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1038,32 +973,6 @@
 </footer>
 
 <script>
-  // Благодарность слушателям: показываем при открытии и мягко убираем автоматически.
-  window.addEventListener('load', () => {
-    const intro = document.getElementById('thanksIntro');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!intro || reduceMotion){
-      if(intro) intro.hidden = true;
-      document.body.classList.remove('lock');
-      return;
-    }
-
-    let dismissed = false;
-    const dismissIntro = () => {
-      if(dismissed) return;
-      dismissed = true;
-      intro.classList.add('is-burning');
-      document.body.classList.remove('lock');
-      setTimeout(() => { intro.classList.add('is-leaving'); }, 620);
-      setTimeout(() => { intro.hidden = true; }, 900);
-    };
-    const timer = setTimeout(dismissIntro, 1200);
-    intro.addEventListener('click', () => { clearTimeout(timer); dismissIntro(); });
-    intro.querySelector('.thanks-skip').addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' '){ clearTimeout(timer); dismissIntro(); }
-    });
-  });
-
   const burger = document.getElementById('burger');
   const drawer = document.getElementById('drawer');
   const scrim = document.getElementById('scrim');
@@ -1184,10 +1093,16 @@
       description:'Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.',
       cover:'/images/povelitel-tayn-cover.png', cta:'Открыть пресейв', href:'https://band.link/W1H1V'
     },
+    presaveSecondary: {
+      eyebrow:'✨ ещё один пресейв открыт', title:'Между смертью и тобой.', accent:'Сохрани первым.',
+      description:'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.',
+      cover:'/images/mezhdu-smertyu-i-toboy-cover.png', cta:'Открыть пресейв', href:'https://band.link/5g0NH'
+    },
     inProgress: [
-      { title:'Гробница падших богов', percent:30 },
+      { title:'Гробница падших богов', percent:100 },
       { title:'Начало после конца', percent:40 },
-      { title:'Новый видеошот', percent:80 }
+      { title:'Новый видеошот', percent:80 },
+      { title:'Ли Грей Мэн', percent:22 }
     ],
     news: [
       { icon:'⚡', status:'уже в эфире', title:'Вышли три новых трека', text:'«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.', href:'https://music.yandex.ru/artist/25657054/tracks' },
@@ -1327,6 +1242,7 @@
     renderFeatured(data.featuredRelease);
     renderFeatured(data.featuredReleaseSecondary, 'featuredSecondary');
     renderPresave(data.presave);
+    renderPresave(data.presaveSecondary, 'presaveSecondary');
     renderProgress(document.getElementById('progressList'), data.inProgress);
     renderNews(document.getElementById('newsList'), data.news);
     renderShots(document.getElementById('shotsGrid'), data.videoShots);
