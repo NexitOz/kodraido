@@ -72,6 +72,15 @@
     font-family:'Unbounded', sans-serif; font-weight:900;
     font-size: 20px; letter-spacing:0.01em; text-decoration:none; color:var(--text);
   }
+  .nav-actions{ display:flex; align-items:center; gap:9px; }
+  .request-btn{
+    min-height:42px; padding:0 14px; border-radius:999px; border:1px solid rgba(255,178,63,.48);
+    background:linear-gradient(135deg,rgba(255,61,120,.2),rgba(255,178,63,.13)); color:var(--text);
+    font:700 11px/1.2 'Manrope',sans-serif; cursor:pointer; backdrop-filter:blur(8px);
+    box-shadow:0 8px 24px -14px rgba(255,61,120,.9); transition:transform .2s ease,border-color .2s ease,background .2s ease;
+  }
+  .request-btn:hover{ transform:translateY(-2px); border-color:var(--gold); background:linear-gradient(135deg,rgba(255,61,120,.32),rgba(255,178,63,.2)); }
+  .request-btn:focus-visible,.contact-close:focus-visible,.contact-form input:focus-visible,.contact-form textarea:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
   .burger{
     width:42px; height:42px; border-radius:50%;
     background: rgba(245,241,255,0.08); border:1px solid var(--line);
@@ -100,6 +109,24 @@
     opacity:0; pointer-events:none; transition:opacity .3s ease;
   }
   .scrim.show{ opacity:1; pointer-events:auto; }
+
+  /* ---------- MESSAGE MODAL ---------- */
+  .contact-modal{ position:fixed; inset:0; z-index:100; display:grid; place-items:center; padding:20px; background:rgba(5,3,13,.78); backdrop-filter:blur(10px); opacity:0; visibility:hidden; transition:opacity .25s ease,visibility .25s ease; }
+  .contact-modal.open{ opacity:1; visibility:visible; }
+  .contact-dialog{ position:relative; width:min(100%,500px); max-height:calc(100vh - 40px); overflow:auto; padding:28px 22px 24px; border:1px solid rgba(255,178,63,.28); border-radius:22px; background:radial-gradient(circle at 90% 0,rgba(255,61,120,.18),transparent 40%),linear-gradient(160deg,#2a2052,#15102b 72%); box-shadow:0 28px 80px rgba(0,0,0,.65); transform:translateY(18px) scale(.97); transition:transform .3s cubic-bezier(.2,.8,.25,1); }
+  .contact-modal.open .contact-dialog{ transform:none; }
+  .contact-dialog::before{ content:"ᚱ"; position:absolute; right:16px; top:10px; color:rgba(255,61,120,.1); font:900 110px/1 'Unbounded',sans-serif; pointer-events:none; }
+  .contact-close{ position:absolute; top:14px; right:14px; z-index:2; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:rgba(13,10,28,.55); color:var(--text); font-size:22px; cursor:pointer; }
+  .contact-dialog h2{ position:relative; padding-right:38px; font-size:23px; line-height:1.25; }
+  .contact-dialog .lede{ position:relative; margin:10px 0 22px; font-size:13px; }
+  .contact-form{ position:relative; display:grid; gap:14px; text-align:left; }
+  .contact-form label{ display:grid; gap:7px; color:var(--muted); font:600 11px/1.3 'JetBrains Mono',monospace; letter-spacing:.04em; }
+  .contact-form input,.contact-form textarea{ width:100%; border:1px solid var(--line); border-radius:12px; background:rgba(13,10,28,.72); color:var(--text); padding:13px 14px; font:500 14px/1.5 'Manrope',sans-serif; resize:vertical; }
+  .contact-form textarea{ min-height:130px; }
+  .contact-form input::placeholder,.contact-form textarea::placeholder{ color:#8277aa; }
+  .contact-submit{ justify-content:center; width:100%; margin-top:2px; background:linear-gradient(120deg,var(--pink),var(--gold)); color:#1a1024; }
+  .contact-note{ margin:0; text-align:center; color:var(--muted); font-size:10.5px; line-height:1.45; }
+  @media(max-width:400px){ .topnav{ padding-left:14px; padding-right:14px; } .topnav .logo{ font-size:16px; } .request-btn{ max-width:104px; padding:0 10px; font-size:10px; } .nav-actions{ gap:6px; } }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -634,8 +661,36 @@
 
 <nav class="topnav">
   <a class="logo" href="#top">КОД РАЙДО<span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span></a>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  <div class="nav-actions">
+    <button class="request-btn" id="requestBtn" type="button">Заявка / пожелание</button>
+    <div class="burger" id="burger" role="button" tabindex="0" aria-label="Открыть меню"><span></span><span></span><span></span></div>
+  </div>
 </nav>
+
+<div class="contact-modal" id="contactModal" aria-hidden="true">
+  <div class="contact-dialog" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <button class="contact-close" id="contactClose" type="button" aria-label="Закрыть">×</button>
+    <div class="eyebrow">обратная связь</div>
+    <h2 id="contactTitle">Расскажи, что хочешь услышать</h2>
+    <p class="lede">Заявка на трек, пожелание или просто несколько тёплых слов — мы всё прочитаем.</p>
+    <form class="contact-form" action="https://formsubmit.co/kodraido@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Новая заявка с сайта КОД РАЙДО">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+      <label>Как к тебе обращаться
+        <input type="text" name="Имя" maxlength="80" placeholder="Имя или ник" required>
+      </label>
+      <label>Почта для ответа
+        <input type="email" name="Email" maxlength="160" placeholder="you@example.com" required>
+      </label>
+      <label>Твоё сообщение
+        <textarea name="Сообщение" maxlength="3000" placeholder="Напиши заявку или пожелание…" required></textarea>
+      </label>
+      <button class="btn-solid contact-submit" type="submit">Отправить сообщение <span aria-hidden="true">→</span></button>
+      <p class="contact-note">Сообщение будет отправлено на почту команды КОД РАЙДО.</p>
+    </form>
+  </div>
+</div>
 
 <div class="scrim" id="scrim"></div>
 <div class="drawer" id="drawer">
@@ -976,12 +1031,37 @@
   const burger = document.getElementById('burger');
   const drawer = document.getElementById('drawer');
   const scrim = document.getElementById('scrim');
+  const requestBtn = document.getElementById('requestBtn');
+  const contactModal = document.getElementById('contactModal');
+  const contactClose = document.getElementById('contactClose');
+  let contactReturnFocus = null;
+
+  function openContact(){
+    contactReturnFocus = document.activeElement;
+    contactModal.classList.add('open');
+    contactModal.setAttribute('aria-hidden','false');
+    document.body.classList.add('lock');
+    contactModal.querySelector('input:not([type="hidden"])').focus();
+  }
+  function closeContact(){
+    contactModal.classList.remove('open');
+    contactModal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('lock');
+    if(contactReturnFocus) contactReturnFocus.focus();
+  }
+  requestBtn.addEventListener('click', openContact);
+  contactClose.addEventListener('click', closeContact);
+  contactModal.addEventListener('click', e => { if(e.target === contactModal) closeContact(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && contactModal.classList.contains('open')) closeContact(); });
+
   function closeDrawer(){ burger.classList.remove('open'); drawer.classList.remove('open'); scrim.classList.remove('show'); }
-  burger.addEventListener('click', () => {
+  function toggleDrawer(){
     const isOpen = drawer.classList.toggle('open');
     burger.classList.toggle('open', isOpen);
     scrim.classList.toggle('show', isOpen);
-  });
+  }
+  burger.addEventListener('click', toggleDrawer);
+  burger.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleDrawer(); } });
   scrim.addEventListener('click', closeDrawer);
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
@@ -1102,7 +1182,7 @@
       { title:'Гробница падших богов', percent:100 },
       { title:'Начало после конца', percent:40 },
       { title:'Новый видеошот', percent:80 },
-      { title:'D.Gray-man', percent:22 }
+      { title:'D.Gray-man', percent:55 }
     ],
     news: [
       { icon:'⚡', status:'уже в эфире', title:'Вышли три новых трека', text:'«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.', href:'https://music.yandex.ru/artist/25657054/tracks' },
