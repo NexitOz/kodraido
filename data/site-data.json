@@ -10,11 +10,11 @@
 
   "featuredRelease": {
     "badge": "Сингл",
-    "title": "Пожиратель звёзд",
+    "title": "Повелитель тайн",
     "description": "Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/pozhiratel-zvezd-cover.png",
+    "cover": "/images/povelitel-tayn-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd"
+    "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn"
   },
 
   "featuredReleaseSecondary": {
@@ -27,16 +27,6 @@
   },
 
   "presave": {
-    "eyebrow": "🔥 скоро выходит",
-    "title": "Повелитель тайн.",
-    "accent": "Пресейв открыт.",
-    "description": "Открой пресейв нового релиза — он сам появится в твоей библиотеке в день выхода.",
-    "cover": "/images/povelitel-tayn-cover.png",
-    "cta": "Открыть пресейв",
-    "href": "https://band.link/W1H1V"
-  },
-
-  "presaveSecondary": {
     "eyebrow": "✨ ещё один пресейв открыт",
     "title": "Между смертью и тобой.",
     "accent": "Сохрани первым.",
@@ -55,7 +45,7 @@
 
   "news": [
     { "icon": "⚡", "status": "уже в эфире", "title": "Вышли три новых трека", "text": "«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.", "href": "https://music.yandex.ru/artist/25657054/tracks" },
-    { "icon": "🔔", "status": "пресейв", "title": "Открыт пресейв «Повелителя тайн»", "text": "Открой пресейв сейчас — новый трек сам появится в твоей библиотеке в день выхода.", "href": "https://band.link/W1H1V" },
+    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Повелитель тайн»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn" },
     { "icon": "🚀", "status": "на модерации", "title": "Ли Мувань и Сяо Ву — скоро", "text": "Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.", "href": "#news" },
     { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Пожиратель звёзд»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd" }
   ],
