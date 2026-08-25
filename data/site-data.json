@@ -19,11 +19,11 @@
 
   "featuredReleaseSecondary": {
     "badge": "Сингл",
-    "title": "Ли Мувань",
+    "title": "Между смертью и тобой",
     "description": "Сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/li-muvan-cover.png",
+    "cover": "/images/mezhdu-smertyu-i-toboy-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://creatormusic.ru/release/kod-raydo-li-muvan"
+    "href": "https://band.link/5g0NH"
   },
 
   "presave": {
@@ -38,12 +38,12 @@
 
   "presaveSecondary": {
     "eyebrow": "✨ ещё один пресейв открыт",
-    "title": "Между смертью и тобой.",
-    "accent": "Сохрани первым.",
+    "title": "Блю Лок —",
+    "accent": "Эго.",
     "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
-    "cover": "/images/mezhdu-smertyu-i-toboy-cover.png",
+    "cover": "/images/blue-lock-ego-cover.png",
     "cta": "Открыть пресейв",
-    "href": "https://band.link/5g0NH"
+    "href": "https://band.link/ue2IB"
   },
 
   "inProgress": [
