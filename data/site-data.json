@@ -10,11 +10,11 @@
 
   "featuredRelease": {
     "badge": "Сингл",
-    "title": "Повелитель тайн",
+    "title": "Блю Лок — Эго",
     "description": "Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/povelitel-tayn-cover.png",
+    "cover": "/images/blue-lock-ego-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn"
+    "href": "https://band.link/ue2IB"
   },
 
   "featuredReleaseSecondary": {
@@ -37,13 +37,13 @@
   },
 
   "presaveSecondary": {
-    "eyebrow": "✨ ещё один пресейв открыт",
-    "title": "Блю Лок —",
-    "accent": "Эго.",
+    "eyebrow": "❄️ новый пресейв открыт",
+    "title": "11 масок.",
+    "accent": "Пресейв открыт.",
     "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
-    "cover": "/images/blue-lock-ego-cover.png",
+    "cover": "/images/11-masok-cover.png",
     "cta": "Открыть пресейв",
-    "href": "https://band.link/ue2IB"
+    "href": "https://band.link/2WeFa"
   },
 
   "inProgress": [
