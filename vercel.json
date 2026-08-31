@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/images/11-masok-cover.png",
+      "destination": "/images/11-masok-cover.jpg",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/videos/voskhozhdenie-v-teni.mp4",
