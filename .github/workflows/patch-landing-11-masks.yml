@@ -1,0 +1,89 @@
+name: Patch landing for Blue Lock and 11 Masks
+
+on:
+  push:
+    branches:
+      - fix-promote-blue-lock-11-masks
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix-promote-blue-lock-11-masks
+          fetch-depth: 0
+
+      - name: Patch index.html
+        shell: python
+        run: |
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          replacements = [
+            (
+              '<div class="eyebrow" id="presaveSecondaryEyebrow">✨ ещё один пресейв открыт</div>\n      <h2><span id="presaveSecondaryTitle">Блю Лок —</span><br><span class="accent" id="presaveSecondaryAccent">Эго.</span></h2>',
+              '<div class="eyebrow" id="presaveSecondaryEyebrow">❄️ новый пресейв открыт</div>\n      <h2><span id="presaveSecondaryTitle">11 масок.</span><br><span class="accent" id="presaveSecondaryAccent">Пресейв открыт.</span></h2>'
+            ),
+            (
+              '<img id="presaveSecondaryCoverImage" src="/images/blue-lock-ego-cover.png" alt="Обложка «Блю Лок — Эго»">',
+              '<img id="presaveSecondaryCoverImage" src="/images/11-masok-cover.png" alt="Обложка «11 масок»">'
+            ),
+            (
+              '<a class="btn-solid presave-btn" id="presaveSecondaryBtn" href="https://band.link/ue2IB" target="_blank" rel="noopener">',
+              '<a class="btn-solid presave-btn" id="presaveSecondaryBtn" href="https://band.link/2WeFa" target="_blank" rel="noopener">'
+            ),
+            (
+              '<p>Пять новых историй уже доступны на музыкальных площадках.</p>',
+              '<p>Шесть новых историй уже доступны на музыкальных площадках.</p>'
+            ),
+            (
+              '<div class="track-scroll">\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd" target="_blank" rel="noopener"><img src="/images/pozhiratel-zvezd-cover.png" alt="Обложка трека «Пожиратель звёзд»"><div class="tnum">01 · НОВОЕ</div><div class="ttitle">Пожиратель звёзд</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-li-muvan" target="_blank" rel="noopener"><img src="/images/li-muvan-cover.png" alt="Обложка трека «Ли Мувань»"><div class="tnum">02 · НОВОЕ</div><div class="ttitle">Ли Мувань</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-mech-i-zhezl-vistorii" target="_blank" rel="noopener"><img src="/images/mech-i-zhezl-vistorii.png" alt="Обложка трека «Меч и жезл Вистории»"><div class="tnum">03 · НОВОЕ</div><div class="ttitle">Меч и жезл Вистории</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-lyubimyy-vo-frankse" target="_blank" rel="noopener"><img src="/images/lyubimyy-vo-frankse.png" alt="Обложка трека «Любимый во Франксе»"><div class="tnum">04 · НОВОЕ</div><div class="ttitle">Любимый во Франксе</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-angel-krovoprolitiya" target="_blank" rel="noopener"><img src="/images/angel-krovoprolitiya.png" alt="Обложка трека «Ангел кровопролития»"><div class="tnum">05 · НОВОЕ</div><div class="ttitle">Ангел кровопролития</div></a>',
+              '<div class="track-scroll">\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-povelitel-tayn" target="_blank" rel="noopener"><img src="/images/povelitel-tayn-cover.png" alt="Обложка трека «Повелитель тайн»"><div class="tnum">01 · НОВОЕ</div><div class="ttitle">Повелитель тайн</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd" target="_blank" rel="noopener"><img src="/images/pozhiratel-zvezd-cover.png" alt="Обложка трека «Пожиратель звёзд»"><div class="tnum">02 · НОВОЕ</div><div class="ttitle">Пожиратель звёзд</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-li-muvan" target="_blank" rel="noopener"><img src="/images/li-muvan-cover.png" alt="Обложка трека «Ли Мувань»"><div class="tnum">03 · НОВОЕ</div><div class="ttitle">Ли Мувань</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-mech-i-zhezl-vistorii" target="_blank" rel="noopener"><img src="/images/mech-i-zhezl-vistorii.png" alt="Обложка трека «Меч и жезл Вистории»"><div class="tnum">04 · НОВОЕ</div><div class="ttitle">Меч и жезл Вистории</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-lyubimyy-vo-frankse" target="_blank" rel="noopener"><img src="/images/lyubimyy-vo-frankse.png" alt="Обложка трека «Любимый во Франксе»"><div class="tnum">05 · НОВОЕ</div><div class="ttitle">Любимый во Франксе</div></a>\n      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-angel-krovoprolitiya" target="_blank" rel="noopener"><img src="/images/angel-krovoprolitiya.png" alt="Обложка трека «Ангел кровопролития»"><div class="tnum">06 · НОВОЕ</div><div class="ttitle">Ангел кровопролития</div></a>'
+            ),
+            (
+              "badge:'Сингл', title:'Повелитель тайн',\n      description:'Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.',\n      cover:'/images/povelitel-tayn-cover.png',\n      cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-povelitel-tayn'",
+              "badge:'Сингл', title:'Блю Лок — Эго',\n      description:'Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.',\n      cover:'/images/blue-lock-ego-cover.png',\n      cta:'Слушать сейчас', href:'https://band.link/ue2IB'"
+            ),
+            (
+              "eyebrow:'✨ ещё один пресейв открыт', title:'Блю Лок —', accent:'Эго.',\n      description:'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.',\n      cover:'/images/blue-lock-ego-cover.png', cta:'Открыть пресейв', href:'https://band.link/ue2IB'",
+              "eyebrow:'❄️ новый пресейв открыт', title:'11 масок.', accent:'Пресейв открыт.',\n      description:'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.',\n      cover:'/images/11-masok-cover.png', cta:'Открыть пресейв', href:'https://band.link/2WeFa'"
+            )
+          ]
+
+          for old, new in replacements:
+            count = s.count(old)
+            if count != 1:
+              raise SystemExit(f'Expected exactly one match, got {count}: {old[:90]!r}')
+            s = s.replace(old, new)
+
+          p.write_text(s, encoding='utf-8')
+
+      - name: Validate
+        run: |
+          python3 -m json.tool data/site-data.json >/dev/null
+          test -f images/11-masok-cover.png
+          grep -q 'id="presaveSecondaryTitle">11 масок' index.html
+          grep -q 'https://band.link/2WeFa' index.html
+          grep -q 'Шесть новых историй' index.html
+          grep -q 'Повелитель тайн</div>' index.html
+          grep -q "title:'Блю Лок — Эго'" index.html
+          git diff --check
+
+      - name: Commit patched landing
+        run: |
+          if git diff --quiet; then
+            echo 'No patch needed'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Sync landing with Blue Lock and 11 Masks'
+          git push origin HEAD:fix-promote-blue-lock-11-masks
