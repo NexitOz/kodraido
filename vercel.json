@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/images/11-masok-cover.jpg",
+      "destination": "/images/11-masok-cover-v2.jpg",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/videos/voskhozhdenie-v-teni.mp4",
@@ -11,6 +18,13 @@
       "source": "/videos/voskhozhdenie-v-teni.mp4",
       "headers": [
         { "key": "Content-Type", "value": "video/mp4" }
+      ]
+    },
+    {
+      "source": "/images/11-masok-cover-v2.jpg",
+      "headers": [
+        { "key": "Content-Type", "value": "image/jpeg" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }
   ]
