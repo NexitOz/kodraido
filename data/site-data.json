@@ -10,30 +10,40 @@
 
   "featuredRelease": {
     "badge": "Сингл",
-    "title": "Повелитель тайн",
-    "description": "Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/povelitel-tayn-cover.png",
+    "title": "Блю Лок — Эго",
+    "description": "Сингл КОД РАЙДО уже доступен на музыкальных площадках.",
+    "cover": "/images/blue-lock-ego-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn"
+    "href": "https://band.link/ue2IB"
   },
 
   "featuredReleaseSecondary": {
     "badge": "Сингл",
-    "title": "Ли Мувань",
+    "title": "Между смертью и тобой",
     "description": "Сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/li-muvan-cover.png",
+    "cover": "/images/mezhdu-smertyu-i-toboy-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://creatormusic.ru/release/kod-raydo-li-muvan"
+    "href": "https://band.link/5g0NH"
   },
 
   "presave": {
-    "eyebrow": "✨ ещё один пресейв открыт",
-    "title": "Между смертью и тобой.",
-    "accent": "Сохрани первым.",
-    "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
-    "cover": "/images/mezhdu-smertyu-i-toboy-cover.png",
+    "eyebrow": "🔥 скоро выходит",
+    "title": "Корзинка фруктов —",
+    "accent": "Когда растает снег.",
+    "description": "Открой пресейв нового релиза — трек появится в твоей библиотеке сразу после выхода.",
+    "cover": "/images/korzinka-fruktov-kogda-rastaet-sneg-cover.png",
     "cta": "Открыть пресейв",
-    "href": "https://band.link/5g0NH"
+    "href": "https://band.link/IQD2a"
+  },
+
+  "presaveSecondary": {
+    "eyebrow": "✨ ещё один пресейв открыт",
+    "title": "11 масок",
+    "accent": "Пресейв открыт.",
+    "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
+    "cover": "/images/11-masok-cover.png",
+    "cta": "Открыть пресейв",
+    "href": "https://band.link/2WeFa"
   },
 
   "inProgress": [
