@@ -1,0 +1,71 @@
+name: One-time landing sync
+
+on:
+  push:
+    branches:
+      - fix/blue-lock-11-masks-presave
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/blue-lock-11-masks-presave
+      - name: Sync static fallbacks and catalog
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          def rep(old, new, count=1):
+              global s
+              n = s.count(old)
+              if n < count:
+                  raise SystemExit(f'Expected at least {count} occurrence(s), found {n}: {old[:100]!r}')
+              s = s.replace(old, new, count)
+
+          rep('<a class="featured-card" id="featuredSecondaryCard" href="https://band.link/5g0NH" target="_blank" rel="noopener">\n      <div class="featured-cover">\n        <img id="featuredSecondaryCover" src="/images/mezhdu-smertyu-i-toboy-cover.png" alt="Обложка сингла «Между смертью и тобой»">', '<a class="featured-card" id="featuredSecondaryCard" href="https://creatormusic.ru/release/kod-raydo-li-muvan" target="_blank" rel="noopener">\n      <div class="featured-cover">\n        <img id="featuredSecondaryCover" src="/images/li-muvan-cover.png" alt="Обложка сингла «Ли Мувань»">')
+          rep('<div class="featured-title" id="featuredSecondaryTitle">Между смертью и тобой</div>', '<div class="featured-title" id="featuredSecondaryTitle">Ли Мувань</div>')
+          rep('<div class="eyebrow" id="presaveEyebrow">🔥 скоро выходит</div>', '<div class="eyebrow" id="presaveEyebrow">✨ пресейв открыт</div>')
+          rep('<h2><span id="presaveTitle">Корзинка фруктов —</span><br><span class="accent" id="presaveAccent">Когда растает снег.</span></h2>', '<h2><span id="presaveTitle">Между смертью и тобой.</span><br><span class="accent" id="presaveAccent">Сохрани первым.</span></h2>')
+          rep('Открой пресейв нового релиза — трек появится в твоей библиотеке сразу после выхода.</p>', 'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.</p>')
+          rep('<img id="presaveCoverImage" src="/images/korzinka-fruktov-kogda-rastaet-sneg-cover.png" alt="Обложка «Корзинка фруктов — Когда растает снег»">', '<img id="presaveCoverImage" src="/images/mezhdu-smertyu-i-toboy-cover.png" alt="Обложка «Между смертью и тобой»">')
+          rep('<a class="btn-solid presave-btn" id="presaveBtn" href="https://band.link/IQD2a" target="_blank" rel="noopener">', '<a class="btn-solid presave-btn" id="presaveBtn" href="https://band.link/5g0NH" target="_blank" rel="noopener">')
+          rep('<div class="eyebrow" id="presaveSecondaryEyebrow">✨ ещё один пресейв открыт</div>', '<div class="eyebrow" id="presaveSecondaryEyebrow">❄️ новый пресейв открыт</div>')
+          rep('<h2><span id="presaveSecondaryTitle">Блю Лок —</span><br><span class="accent" id="presaveSecondaryAccent">Эго.</span></h2>', '<h2><span id="presaveSecondaryTitle">11 масок.</span><br><span class="accent" id="presaveSecondaryAccent">Сохрани первым.</span></h2>')
+          rep('<img id="presaveSecondaryCoverImage" src="/images/blue-lock-ego-cover.png" alt="Обложка «Блю Лок — Эго»">', '<img id="presaveSecondaryCoverImage" src="/images/11-masok-cover.jpg" alt="Обложка «11 масок»">')
+          rep('<a class="btn-solid presave-btn" id="presaveSecondaryBtn" href="https://band.link/ue2IB" target="_blank" rel="noopener">', '<a class="btn-solid presave-btn" id="presaveSecondaryBtn" href="https://band.link/2WeFa" target="_blank" rel="noopener">')
+          rep("badge:'Сингл', title:'Повелитель тайн',\n      description:'Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.',\n      cover:'/images/povelitel-tayn-cover.png',\n      cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-povelitel-tayn'", "badge:'Сингл', title:'Блю Лок — Эго',\n      description:'Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.',\n      cover:'/images/blue-lock-ego-cover.png',\n      cta:'Слушать сейчас', href:'https://band.link/ue2IB'")
+          rep("badge:'Сингл', title:'Между смертью и тобой',\n      description:'Сингл КОД РАЙДО уже доступен на музыкальных площадках.',\n      cover:'/images/mezhdu-smertyu-i-toboy-cover.png',\n      cta:'Слушать сейчас', href:'https://band.link/5g0NH'", "badge:'Сингл', title:'Ли Мувань',\n      description:'Сингл КОД РАЙДО уже доступен на музыкальных площадках.',\n      cover:'/images/li-muvan-cover.png',\n      cta:'Слушать сейчас', href:'https://creatormusic.ru/release/kod-raydo-li-muvan'")
+          rep("eyebrow:'🔥 скоро выходит', title:'Корзинка фруктов —', accent:'Когда растает снег.',\n      description:'Открой пресейв нового релиза — трек появится в твоей библиотеке сразу после выхода.',\n      cover:'/images/korzinka-fruktov-kogda-rastaet-sneg-cover.png', cta:'Открыть пресейв', href:'https://band.link/IQD2a'", "eyebrow:'✨ пресейв открыт', title:'Между смертью и тобой.', accent:'Сохрани первым.',\n      description:'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.',\n      cover:'/images/mezhdu-smertyu-i-toboy-cover.png', cta:'Открыть пресейв', href:'https://band.link/5g0NH'")
+          rep("eyebrow:'✨ ещё один пресейв открыт', title:'Блю Лок —', accent:'Эго.',\n      description:'Открой пресейв — трек появится в твоей библиотеке сразу после релиза.',\n      cover:'/images/blue-lock-ego-cover.png', cta:'Открыть пресейв', href:'https://band.link/ue2IB'", "eyebrow:'❄️ новый пресейв открыт', title:'11 масок.', accent:'Сохрани первым.',\n      description:'Открой пресейв нового релиза — трек появится в твоей библиотеке сразу после выхода.',\n      cover:'/images/11-masok-cover.jpg', cta:'Открыть пресейв', href:'https://band.link/2WeFa'")
+          rep('<p>Пять новых историй уже доступны на музыкальных площадках.</p>', '<p>Шесть новых историй уже доступны на музыкальных площадках.</p>')
+          marker = '    <div class="track-scroll">\n'
+          pov = '      <a class="track-card" href="https://creatormusic.ru/release/kod-raydo-povelitel-tayn" target="_blank" rel="noopener"><img src="/images/povelitel-tayn-cover.png" alt="Обложка трека «Повелитель тайн»"><div class="tnum">01 · НОВОЕ</div><div class="ttitle">Повелитель тайн</div></a>\n'
+          rep(marker, marker + pov)
+          rep('<div class="tnum">01 · НОВОЕ</div><div class="ttitle">Пожиратель звёзд</div>', '<div class="tnum">02 · НОВОЕ</div><div class="ttitle">Пожиратель звёзд</div>')
+          rep('<div class="tnum">02 · НОВОЕ</div><div class="ttitle">Ли Мувань</div>', '<div class="tnum">03 · НОВОЕ</div><div class="ttitle">Ли Мувань</div>')
+          rep('<div class="tnum">03 · НОВОЕ</div><div class="ttitle">Меч и жезл Вистории</div>', '<div class="tnum">04 · НОВОЕ</div><div class="ttitle">Меч и жезл Вистории</div>')
+          rep('<div class="tnum">04 · НОВОЕ</div><div class="ttitle">Любимый во Франксе</div>', '<div class="tnum">05 · НОВОЕ</div><div class="ttitle">Любимый во Франксе</div>')
+          rep('<div class="tnum">05 · НОВОЕ</div><div class="ttitle">Ангел кровопролития</div>', '<div class="tnum">06 · НОВОЕ</div><div class="ttitle">Ангел кровопролития</div>')
+          p.write_text(s, encoding='utf-8')
+          PY
+          python3 -m json.tool data/site-data.json >/dev/null
+          grep -q 'id="presaveSecondaryTitle">11 масок' index.html
+          grep -q 'Шесть новых историй' index.html
+          grep -q 'Повелитель тайн</div></a>' index.html
+      - name: Commit synchronized landing
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Sync landing fallbacks and six-track catalog'
+          git push origin HEAD:fix/blue-lock-11-masks-presave
