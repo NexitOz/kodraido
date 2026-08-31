@@ -10,11 +10,11 @@
 
   "featuredRelease": {
     "badge": "Сингл",
-    "title": "Повелитель тайн",
+    "title": "Блю Лок — Эго",
     "description": "Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/povelitel-tayn-cover.png",
+    "cover": "/images/blue-lock-ego-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn"
+    "href": "https://band.link/ue2IB"
   },
 
   "featuredReleaseSecondary": {
@@ -27,13 +27,23 @@
   },
 
   "presave": {
-    "eyebrow": "✨ ещё один пресейв открыт",
+    "eyebrow": "✨ пресейв открыт",
     "title": "Между смертью и тобой.",
     "accent": "Сохрани первым.",
     "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
     "cover": "/images/mezhdu-smertyu-i-toboy-cover.png",
     "cta": "Открыть пресейв",
     "href": "https://band.link/5g0NH"
+  },
+
+  "presaveSecondary": {
+    "eyebrow": "❄️ новый пресейв открыт",
+    "title": "11 масок.",
+    "accent": "Сохрани первым.",
+    "description": "Открой пресейв нового релиза — трек появится в твоей библиотеке сразу после выхода.",
+    "cover": "/images/11-masok-cover.jpg",
+    "cta": "Открыть пресейв",
+    "href": "https://band.link/2WeFa"
   },
 
   "inProgress": [
@@ -44,10 +54,10 @@
   ],
 
   "news": [
-    { "icon": "⚡", "status": "уже в эфире", "title": "Вышли три новых трека", "text": "«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.", "href": "https://music.yandex.ru/artist/25657054/tracks" },
-    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Повелитель тайн»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn" },
-    { "icon": "🚀", "status": "на модерации", "title": "Ли Мувань и Сяо Ву — скоро", "text": "Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.", "href": "#news" },
-    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Пожиратель звёзд»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd" }
+    { "icon": "⚽", "status": "уже в эфире", "title": "Вышел «Блю Лок — Эго»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://band.link/ue2IB" },
+    { "icon": "🎭", "status": "пресейв", "title": "Открыт пресейв «11 масок»", "text": "Новая история по Предвестникам Фатуи уже доступна для пресейва.", "href": "https://band.link/2WeFa" },
+    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Повелитель тайн»", "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn" },
+    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Пожиратель звёзд»", "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd" }
   ],
 
   "videoShots": [
