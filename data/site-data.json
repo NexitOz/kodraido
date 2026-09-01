@@ -1,13 +1,36 @@
 {
   "platforms": [
-    { "id": "vk", "label": "VK Музыка", "href": "https://vk.ru/artist/6600081370447566768" },
-    { "id": "yamusic", "label": "Яндекс Музыка", "href": "https://music.yandex.ru/artist/25657054" },
-    { "id": "spotify", "label": "Spotify", "href": "https://open.spotify.com/artist/0r3eF6uae24YhWaGRUeKkk" },
-    { "id": "ytmusic", "label": "YouTube Music", "href": "https://music.youtube.com/channel/UC7I8qnYEQ11bsBQlMcjUl3w" },
-    { "id": "apple", "label": "Apple Music", "href": "https://music.apple.com/ru/artist/%D0%BA%D0%BE%D0%B4-%D1%80%D0%B0%D0%B9%D0%B4%D0%BE/6778760719" },
-    { "id": "sber", "label": "СберЗвук", "href": "https://share.zvuk.com/cLQ0/diebmtq4" }
+    {
+      "id": "vk",
+      "label": "VK Музыка",
+      "href": "https://vk.ru/artist/6600081370447566768"
+    },
+    {
+      "id": "yamusic",
+      "label": "Яндекс Музыка",
+      "href": "https://music.yandex.ru/artist/25657054"
+    },
+    {
+      "id": "spotify",
+      "label": "Spotify",
+      "href": "https://open.spotify.com/artist/0r3eF6uae24YhWaGRUeKkk"
+    },
+    {
+      "id": "ytmusic",
+      "label": "YouTube Music",
+      "href": "https://music.youtube.com/channel/UC7I8qnYEQ11bsBQlMcjUl3w"
+    },
+    {
+      "id": "apple",
+      "label": "Apple Music",
+      "href": "https://music.apple.com/ru/artist/%D0%BA%D0%BE%D0%B4-%D1%80%D0%B0%D0%B9%D0%B4%D0%BE/6778760719"
+    },
+    {
+      "id": "sber",
+      "label": "СберЗвук",
+      "href": "https://share.zvuk.com/cLQ0/diebmtq4"
+    }
   ],
-
   "featuredRelease": {
     "badge": "Сингл",
     "title": "Блю Лок — Эго",
@@ -16,27 +39,15 @@
     "cta": "Слушать сейчас",
     "href": "https://band.link/ue2IB"
   },
-
   "featuredReleaseSecondary": {
     "badge": "Сингл",
-    "title": "Между смертью и тобой",
+    "title": "Корзинка фруктов — Когда растает снег",
     "description": "Сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/mezhdu-smertyu-i-toboy-cover.png",
-    "cta": "Слушать сейчас",
-    "href": "https://band.link/5g0NH"
-  },
-
-  "presave": {
-    "eyebrow": "🔥 скоро выходит",
-    "title": "Корзинка фруктов —",
-    "accent": "Когда растает снег.",
-    "description": "Открой пресейв нового релиза — трек появится в твоей библиотеке сразу после выхода.",
     "cover": "/images/korzinka-fruktov-kogda-rastaet-sneg-cover.png",
-    "cta": "Открыть пресейв",
+    "cta": "Слушать сейчас",
     "href": "https://band.link/IQD2a"
   },
-
-  "presaveSecondary": {
+  "presave": {
     "eyebrow": "❄️ новый пресейв открыт",
     "title": "11 масок.",
     "accent": "Пресейв открыт.",
@@ -45,32 +56,102 @@
     "cta": "Открыть пресейв",
     "href": "https://band.link/2WeFa"
   },
-
   "inProgress": [
-    { "title": "Гробница падших богов", "percent": 100 },
-    { "title": "Начало после конца", "percent": 40 },
-    { "title": "Новый видеошот", "percent": 80 },
-    { "title": "D.Gray-man", "percent": 55 }
+    {
+      "title": "Начало после конца",
+      "percent": 40
+    },
+    {
+      "title": "Новый видеошот",
+      "percent": 80
+    },
+    {
+      "title": "D.Gray-man",
+      "percent": 100
+    }
   ],
-
   "news": [
-    { "icon": "⚡", "status": "уже в эфире", "title": "Вышли три новых трека", "text": "«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.", "href": "https://music.yandex.ru/artist/25657054/tracks" },
-    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Повелитель тайн»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn" },
-    { "icon": "🚀", "status": "на модерации", "title": "Ли Мувань и Сяо Ву — скоро", "text": "Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.", "href": "#news" },
-    { "icon": "⭐", "status": "уже в эфире", "title": "Вышел «Пожиратель звёзд»", "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.", "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd" }
+    {
+      "icon": "⭐",
+      "status": "уже в эфире",
+      "title": "Вышел «Между смертью и тобой»",
+      "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
+      "href": "https://band.link/5g0NH"
+    },
+    {
+      "icon": "⚡",
+      "status": "уже в эфире",
+      "title": "Вышли три новых трека",
+      "text": "«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.",
+      "href": "https://music.yandex.ru/artist/25657054/tracks"
+    },
+    {
+      "icon": "⭐",
+      "status": "уже в эфире",
+      "title": "Вышел «Повелитель тайн»",
+      "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
+      "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn"
+    },
+    {
+      "icon": "🚀",
+      "status": "на модерации",
+      "title": "Ли Мувань и Сяо Ву — скоро",
+      "text": "Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.",
+      "href": "#news"
+    },
+    {
+      "icon": "⭐",
+      "status": "уже в эфире",
+      "title": "Вышел «Пожиратель звёзд»",
+      "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
+      "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd"
+    }
   ],
-
   "videoShots": [
-    { "title": "Пожиратель звёзд", "status": "скоро" },
-    { "title": "Восхождение в тени", "status": "новое", "video": "/videos/voskhozhdenie-v-teni.mp4" },
-    { "title": "Меч и жезл Вистории", "status": "скоро" }
+    {
+      "title": "Пожиратель звёзд",
+      "status": "скоро"
+    },
+    {
+      "title": "Восхождение в тени",
+      "status": "новое",
+      "video": "/videos/voskhozhdenie-v-teni.mp4"
+    },
+    {
+      "title": "Меч и жезл Вистории",
+      "status": "скоро"
+    }
   ],
-
   "social": [
-    { "id": "tiktok", "label": "TikTok", "handle": "@kodraido", "href": "https://www.tiktok.com/@kodraido" },
-    { "id": "youtube", "label": "YouTube", "handle": "@kodraido", "href": "https://youtube.com/@kodraido" },
-    { "id": "vk", "label": "VK", "handle": "kodraido", "href": "https://vk.ru/artist/6600081370447566768" },
-    { "id": "telegram", "label": "Telegram", "handle": "@kodraido", "href": "https://t.me/kodraido" },
-    { "id": "instagram", "label": "Instagram", "handle": "скоро", "href": null }
+    {
+      "id": "tiktok",
+      "label": "TikTok",
+      "handle": "@kodraido",
+      "href": "https://www.tiktok.com/@kodraido"
+    },
+    {
+      "id": "youtube",
+      "label": "YouTube",
+      "handle": "@kodraido",
+      "href": "https://youtube.com/@kodraido"
+    },
+    {
+      "id": "vk",
+      "label": "VK",
+      "handle": "kodraido",
+      "href": "https://vk.ru/artist/6600081370447566768"
+    },
+    {
+      "id": "telegram",
+      "label": "Telegram",
+      "handle": "@kodraido",
+      "href": "https://t.me/kodraido"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "handle": "скоро",
+      "href": null
+    }
   ]
 }
