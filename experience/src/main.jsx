@@ -96,7 +96,7 @@ function App() {
 
       <section className="media section" id="media">
         <div className="media-poster" onClick={()=>setVideoOpen(true)} role="button" tabIndex="0" onKeyDown={e=>(e.key==='Enter'||e.key===' ')&&setVideoOpen(true)} aria-label={`Смотреть видеошот «${content.video.title}»`}>
-          <img src={content.video.poster} alt="" loading="lazy"/><div className="media-shade"/><button className="play" aria-hidden="true">▶</button><span className="media-number">04 / MEDIA</span><div><p>ВИДЕОШОТ</p><h2>{content.video.title}</h2></div>
+          <img src={content.video.poster} alt="" loading="lazy"/><div className="media-shade"/><span className="play" aria-hidden="true">▶</span><span className="media-number">04 / MEDIA</span><div><p>ВИДЕОШОТ</p><h2>{content.video.title}</h2></div>
         </div>
       </section>
 
