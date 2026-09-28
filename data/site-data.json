@@ -33,19 +33,11 @@
   ],
   "featuredRelease": {
     "badge": "Сингл",
-    "title": "Блю Лок — Эго",
+    "title": "11 масок",
     "description": "Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/blue-lock-ego-cover.png",
+    "cover": "/images/11-masok-cover.png",
     "cta": "Слушать сейчас",
-    "href": "https://band.link/ue2IB"
-  },
-  "featuredReleaseSecondary": {
-    "badge": "Сингл",
-    "title": "Корзинка фруктов — Когда растает снег",
-    "description": "Сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/korzinka-fruktov-kogda-rastaet-sneg-cover.png",
-    "cta": "Слушать сейчас",
-    "href": "https://band.link/IQD2a"
+    "href": "https://band.link/2WeFa"
   },
   "presave": {
     "eyebrow": "❄️ новый пресейв открыт",
@@ -66,8 +58,8 @@
       "percent": 80
     },
     {
-      "title": "D.Gray-man",
-      "percent": 100
+      "title": "Аля кокетничает со мной по-русски",
+      "percent": 65
     }
   ],
   "news": [
@@ -77,6 +69,20 @@
       "title": "Вышел «Между смертью и тобой»",
       "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
       "href": "https://band.link/5g0NH"
+    },
+    {
+      "icon": "⚽",
+      "status": "уже в эфире",
+      "title": "Вышел «Блю Лок — Эго»",
+      "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
+      "href": "https://band.link/ue2IB"
+    },
+    {
+      "icon": "❄️",
+      "status": "уже в эфире",
+      "title": "Вышла «Корзинка фруктов — Когда растает снег»",
+      "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
+      "href": "https://band.link/IQD2a"
     },
     {
       "icon": "⚡",
