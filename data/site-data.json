@@ -44,7 +44,7 @@
     "title": "Ветер Ванадис.",
     "accent": "Пресейв открыт.",
     "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
-    "cover": "/api/veter-cover?v=2",
+    "cover": "/images/veter-vanadis-cover.avif",
     "cta": "Открыть пресейв",
     "href": "https://band.link/nkgdD"
   },
