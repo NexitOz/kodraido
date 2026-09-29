@@ -1,0 +1,78 @@
+name: Sync Veter Vanadis fallback
+
+on:
+  push:
+    branches:
+      - claude/landing-vercel-deploy-01i3om
+
+permissions:
+  contents: write
+
+jobs:
+  sync-fallback:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/landing-vercel-deploy-01i3om
+
+      - name: Sync presave markup and fallback
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = [
+              (
+                  '<div class="eyebrow" id="presaveEyebrow">❄️ новый пресейв открыт</div>',
+                  '<div class="eyebrow" id="presaveEyebrow">🏹 новый пресейв открыт</div>'
+              ),
+              (
+                  '<h2><span id="presaveTitle">11 масок.</span><br><span class="accent" id="presaveAccent">Пресейв открыт.</span></h2>',
+                  '<h2><span id="presaveTitle">Ветер Ванадис.</span><br><span class="accent" id="presaveAccent">Пресейв открыт.</span></h2>'
+              ),
+              (
+                  '<img id="presaveCoverImage" src="/images/11-masok-cover.png" alt="Обложка «11 масок»">',
+                  '<img id="presaveCoverImage" src="/api/veter-cover?v=4" alt="Обложка «Ветер Ванадис»">'
+              ),
+              (
+                  '<a class="btn-solid presave-btn" id="presaveBtn" href="https://band.link/2WeFa" target="_blank" rel="noopener">',
+                  '<a class="btn-solid presave-btn" id="presaveBtn" href="https://band.link/nkgdD" target="_blank" rel="noopener">'
+              ),
+              (
+                  '  "presave": {\n    "eyebrow": "❄️ новый пресейв открыт",\n    "title": "11 масок.",\n    "accent": "Пресейв открыт.",\n    "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",\n    "cover": "/images/11-masok-cover.png",\n    "cta": "Открыть пресейв",\n    "href": "https://band.link/2WeFa"\n  },',
+                  '  "presave": {\n    "eyebrow": "🏹 новый пресейв открыт",\n    "title": "Ветер Ванадис.",\n    "accent": "Пресейв открыт.",\n    "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",\n    "cover": "/api/veter-cover?v=4",\n    "cta": "Открыть пресейв",\n    "href": "https://band.link/nkgdD"\n  },'
+              ),
+          ]
+
+          for old, new in replacements:
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'Expected exactly 1 match, got {count}: {old[:100]}')
+              text = text.replace(old, new, 1)
+
+          required = [
+              'id="presaveTitle">Ветер Ванадис.',
+              'id="presaveCoverImage" src="/api/veter-cover?v=4"',
+              'id="presaveBtn" href="https://band.link/nkgdD"',
+              '"title": "Ветер Ванадис."',
+              '"cover": "/api/veter-cover?v=4"',
+              '"href": "https://band.link/nkgdD"',
+          ]
+          for needle in required:
+              if needle not in text:
+                  raise SystemExit(f'Missing expected value: {needle}')
+
+          path.write_text(text, encoding='utf-8')
+
+      - name: Commit fallback sync
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --check
+          git commit -m "Sync Veter Vanadis presave fallback"
+          git push origin HEAD:claude/landing-vercel-deploy-01i3om
