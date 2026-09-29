@@ -1,14 +1,16 @@
 export default async function handler(req, res) {
   try {
-    const source = 'https://raw.githubusercontent.com/NexitOz/kodraido/claude/landing-vercel-deploy-01i3om/images/veter-vanadis-cover-512.b64.txt';
-    const response = await fetch(source, { cache: 'force-cache' });
-    if (!response.ok) {
+    const base = 'https://raw.githubusercontent.com/NexitOz/kodraido/claude/landing-vercel-deploy-01i3om/images/veter-cover-b64';
+    const urls = Array.from({ length: 9 }, (_, i) => `${base}/part${String(i).padStart(2, '0')}.txt`);
+    const responses = await Promise.all(urls.map(url => fetch(url, { cache: 'force-cache' })));
+    if (responses.some(response => !response.ok)) {
       res.status(502).send('Cover source unavailable');
       return;
     }
-    const base64 = (await response.text()).trim();
+    const chunks = await Promise.all(responses.map(response => response.text()));
+    const base64 = chunks.map(chunk => chunk.trim()).join('');
     const image = Buffer.from(base64, 'base64');
-    res.setHeader('Content-Type', 'image/webp');
+    res.setHeader('Content-Type', 'image/jpeg');
     res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     res.status(200).send(image);
   } catch (error) {
