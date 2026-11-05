@@ -1,4 +1,5 @@
 {
+  "updatedAt": "2026-11-05",
   "platforms": [
     {
       "id": "vk",
@@ -31,103 +32,6 @@
       "href": "https://share.zvuk.com/cLQ0/diebmtq4"
     }
   ],
-  "featuredRelease": {
-    "badge": "Сингл",
-    "title": "11 масок",
-    "description": "Новый сингл КОД РАЙДО уже доступен на музыкальных площадках.",
-    "cover": "/images/11-masok-cover.png",
-    "cta": "Слушать сейчас",
-    "href": "https://band.link/2WeFa"
-  },
-  "presave": {
-    "eyebrow": "🏹 новый пресейв открыт",
-    "title": "Ветер Ванадис.",
-    "accent": "Пресейв открыт.",
-    "description": "Открой пресейв — трек появится в твоей библиотеке сразу после релиза.",
-    "cover": "/api/veter-cover?v=4",
-    "cta": "Открыть пресейв",
-    "href": "https://band.link/nkgdD"
-  },
-  "inProgress": [
-    {
-      "title": "Начало после конца",
-      "percent": 40
-    },
-    {
-      "title": "Новый видеошот",
-      "percent": 80
-    },
-    {
-      "title": "Аля кокетничает со мной по-русски",
-      "percent": 65
-    }
-  ],
-  "news": [
-    {
-      "icon": "⭐",
-      "status": "уже в эфире",
-      "title": "Вышел «Между смертью и тобой»",
-      "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
-      "href": "https://band.link/5g0NH"
-    },
-    {
-      "icon": "⚽",
-      "status": "уже в эфире",
-      "title": "Вышел «Блю Лок — Эго»",
-      "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
-      "href": "https://band.link/ue2IB"
-    },
-    {
-      "icon": "❄️",
-      "status": "уже в эфире",
-      "title": "Вышла «Корзинка фруктов — Когда растает снег»",
-      "text": "Сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
-      "href": "https://band.link/IQD2a"
-    },
-    {
-      "icon": "⚡",
-      "status": "уже в эфире",
-      "title": "Вышли три новых трека",
-      "text": "«Ангел кровопролития», «Любимый во Франксе» и «Меч и жезл Вистории» уже доступны слушателям.",
-      "href": "https://music.yandex.ru/artist/25657054/tracks"
-    },
-    {
-      "icon": "⭐",
-      "status": "уже в эфире",
-      "title": "Вышел «Повелитель тайн»",
-      "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
-      "href": "https://creatormusic.ru/release/kod-raydo-povelitel-tayn"
-    },
-    {
-      "icon": "🚀",
-      "status": "на модерации",
-      "title": "Ли Мувань и Сяо Ву — скоро",
-      "text": "Треки отправлены на модерацию и уже готовятся выйти на музыкальных площадках.",
-      "href": "#news"
-    },
-    {
-      "icon": "⭐",
-      "status": "уже в эфире",
-      "title": "Вышел «Пожиратель звёзд»",
-      "text": "Новый сингл уже доступен на музыкальных площадках — слушай прямо сейчас.",
-      "href": "https://creatormusic.ru/release/kod-raydo-pozhiratel-zvezd"
-    }
-  ],
-  "videoShots": [
-    {
-      "title": "Пожиратель звёзд",
-      "status": "скоро"
-    },
-    {
-      "title": "Восхождение в тени",
-      "status": "новое",
-      "video": "/videos/voskhozhdenie-v-teni.mp4"
-    },
-    {
-      "title": "Меч и жезл Вистории",
-      "status": "скоро"
-    }
-  ],
   "social": [
     {
       "id": "tiktok",
@@ -152,12 +56,31 @@
       "label": "Telegram",
       "handle": "@kodraido",
       "href": "https://t.me/kodraido"
+    }
+  ],
+  "featuredRelease": {
+    "title": "Пока море аплодирует",
+    "subtitle": "Фурина v. 1.0",
+    "cover": "/assets/furina.webp",
+    "status": "Песня и визуал",
+    "href": "https://t.me/kodraido"
+  },
+  "inProgress": [
+    {
+      "title": "Наруто",
+      "status": "Песня и эдит"
     },
     {
-      "id": "instagram",
-      "label": "Instagram",
-      "handle": "скоро",
-      "href": null
+      "title": "NieR: Automata",
+      "status": "Эдит с объёмными субтитрами"
+    },
+    {
+      "title": "86 / Разведкорпус",
+      "status": "Полные эдиты"
+    },
+    {
+      "title": "Код Райдо: между мирами",
+      "status": "Идея аниме-сериала"
     }
   ]
 }
